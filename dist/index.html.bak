@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>������� ���� ������ ��������������</title>
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <div class="searchbar">
+      <input type="text" name="search"><img src="lupa.png">
+    </div>
+    <div class="menubar">
+      <div class="menucontainer">
+        <div class="zagolovok">������� ���� ������ ��������������</div>
+        <div class="menuelem_active"><a href="main.html">�������</a></div>
+        <div class="menuelem"><a href="#">������� �����</a></div>
+        <div class="menuelem"><a href="#">������� �����������</a></div>
+        <div class="menuelem"><a href="#">����_4</a></div>
+      </div>
+    </div>
+    <div class="gallery">
+      <div class="img_1"><img src="pic_1.jpg">
+      </div>
+      <div class="img_2"><img src="pic_2.jpg">
+      </div>
+      <div class="img_3"><img src="pic_3.jpg">
+      </div>
+    </div>
+  </body>
+</html>
