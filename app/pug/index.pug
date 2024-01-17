@@ -1,92 +1,24 @@
-
-block variables
-	- var i = 1
-	- var title = 'Морской порт города Красноастанска'
-	-
-		var dictMenu = {'Главная': 'index.html', 
-				'История порта' : "#",  
-				'Таблица мониторинга': "#",
-				'Меню_4': "#"
-		}
-		
-	- var listImages = ['pic1.jpg', 'pic2.jpg', 'pic3.jpg']
-
-	- 
-		var listSections = [
-			{'header' : 'Пассажирские перевозки',
-			'text' : 'Морской порт Красноастанска занимается пассажирскими перевозками граждансконо населения по всем популярным маршрутам морского движения и готов в любое время принят на стоянку пассажирский корабль любого размера.',
-			'pic' : 'human.jpg'
-			},
-			{'header' : 'Грузовые перевозки',
-			'text' : 'Морской порт Красноастанска также занимается грузовыми перевозками. Клиенты, которые выбрали морской фрахт, отмечают существенные преимущества. Среди них:Относительно низкая стоимость. В сравнении с авиационными перевозками цена грузоперевозок данным видом транспорта на порядок ниже. Соответственно себестоимость товаров, доставленных таким путем, дешевле, а спрос на них – выше. Поэтому реализация бизнес-плана для предпринимателей-заказчиков будет произведена быстрее. Универсальность доставки. Морской борт предназначен для перемещения любых типов грузов – сыпучих веществ, твёрдых и жидких продуктов, сырья, хрупких материалов, негабаритного оборудования, металлов, объектов машиностроения, автомобилей, токсических и опасных грузов;Высокий уровень безопасности. В отличие автомобильных грузоперевозок риск крушений и хищений с борта минимален. Единственное, что представляет угрозу – пиратские нападения, которые время от времени все-таки бывают, но правоохранительные органы международного уровня предпринимают меры по нейтрализации опасности;Огромный товарооборот. Грузоподъемность товарных судов составляет 20-25 тысяч тонн, что позволяет перемещать по морю козловые краны, объекты машиностроения, нефтяные вышки. В среднем на бортах можно разместить от 18 до 250 тысяч контейнеров, наполненных различными товарами.',
-			'pic' : 'gruz.png'
-			}
-		]
-
-	-
-		var listLitlleSection = [
-			{'header' : 'Ремонт в северном причале',
-			'text' : 'Вчера было объявленно о начале ремонта северного причала, который уже 36 лет  не получал переоборцдвания',
-			'pic' : 'news1.jpg'},
-			{'header' : 'Рост грузовоперевозок',
-			'text' : 'За этот год оборот грузовых суден вырос на 32% по сравнению с прошлым годом, это рост связывают с недавним открытием угольной шахты',
-			'pic' : 'news2.jpg'},
-			{'header' : 'Смена заместителя',
-			'text' : 'Сегодня на почётную пенсию вышел заместител главы порта Анатолий Иванов, который работал в нашем порту 25 лет',
-			'pic' : 'news3.jpg'}
-		]
-
-mixin createMenu(menu, active)
-	each value, key in menu
-		if active == key
-			a(href= value, class='active')= key
-		else
-			a(href= value, class='not_active')= key
-
-
-
-
-doctype html
-html(lang="ru")
-	head
-		meta(charset="utf-8")
-		title #{title}
-		link(rel="stylesheet", href="css/main.css")
-	body
-		div.searchbar
-			input(type="text" name="search")
-			img(src="img/lupa.png")
-		div.menubar
-			div.menucontainer
-				div.zagolovok #{title}
-				+createMenu(dictMenu, 'Главная')
-		div.gallery
-			- i = 1
-			each value in listImages
-				div(class="img"+i)
-					img(src="img/" +value)
-					- i++
-		div.content
-			- i = 0
-			each item in listSections
-				div.blocktext
-					p
-						img(src="img/" +item.pic)
-					h3= item.header
-					p.text= item.text
-					- i++
-				if i == 2
-					div.blockofblocks
-						each item2 in listLitlleSection
-							div.textandpic
-								div.text
-									h3= item2.header
-									p= item2.text
-								div.pic
-									img(src="img/" +item2.pic)
-
-		div.contacts
-			span © Зеленин К.В., Б9121-09.03.04, 2023-2024
-			span.right Контакты
-
-				
+extends template
+block append variables
+	- var title1 = 'Главная'
+block append header
+	+createGallery()
+block content
+	div.content
+		- i = 0
+		each item in listSections
+			div.blocktext
+				p
+					img(src="img/" +item.pic).imagesmall
+				h3= item.header
+				p.text= item.text
+				- i++
+			if i == 2
+				div.blockofblocks
+					each item2 in listLitlleSection
+						div.textandpic
+							div.text
+								h3= item2.header
+								p= item2.text
+							div.pic
+								img(src="img/" +item2.pic)

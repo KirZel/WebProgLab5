@@ -1,0 +1,116 @@
+extends template
+block append variables
+		- var title1 = 'Таблица мониторинга'
+block append header
+	+createGallery()
+block content
+	h1 Таблица мониторинга
+	p В данной таблице представлены данные о пришедших и ушедших судах за октябрь 2023
+	details
+		summary График
+		form
+			p
+				table
+					tr
+						th Значение по X
+						th Значение по Y
+					tr
+						td
+							input(type="radio" name="hor" value="hor1") 
+							| Дата Прибытия;
+							br
+							input(type="radio" name="hor" value="hor2") 
+							| Дата отбытия 
+							br
+						td
+							input(type="radio" name="ver" value="ver1") 
+							| Общая загруженности 
+							br
+							input(type="radio" name="ver" value="ver2") 
+							| Общая вместимости 
+							br
+							input(type="radio" name="ver" value="ver3") 
+							| Общее колиество кораблей 
+							br
+			input(type="button" value="Создать график")
+	details
+		summary Фильтр
+		form
+			p Фильтр по ИМО судна: 
+				input(type="text" name="fil1" id="fil1")
+				br 
+				|Фильтр по модели судна: 
+				input(type="text" name="fil2" id="fil2")
+				br 
+				|Фильтр по типу судна: 
+				select(name="level1")
+					option(value="fil3_0") Пассажирское
+					option(value="fil3_1" selected) Грузовое 
+				br 
+				|Фильтр по Дате прибытия: 
+				input(type="date" min="2023-10-01" max="2023-10-31" name="fil4" id="fil4")
+				br 
+				|Фильтр по Дате отбытия: 
+				input(type="date" min="2023-10-01" max="2023-10-31" name="fil5" id="fil5")
+				br 
+				|Фильтр по вместимости: В диапозоне от
+				input(type="number" name="fil6_1" id="fil6_1") 
+				|до 
+				input(type="number" name="fil6_2" id="fil6_2")
+				br 
+				|Фильтр по нагруженности: В диапозоне от
+				input(type="number" name="fil7_1" id="fil7_1") 
+				|до
+				input(type="number" name="fil7_2" id="fil7_2")
+				br
+				input(type="button" value="Отфильтровать")
+	details
+		summary Сортировка
+		form
+			p 
+				| Первый уровень:
+				select(name="level1")
+					option(value="l1_0") Дате прибытия
+					option(value="l1_1") Дате отбытия
+					option(value="l1_2") Вместимости судна
+					option(value="l1_3") Нагруженности судна
+					option(value="l1_4") ИМО судна
+				br 
+				|Второй уровень:
+				select(name="level2")
+					option(value="l2_0") Дате прибытия
+					option(value="l2_1") Дате отбытия
+					option(value="l2_2") Вместимости судна
+					option(value="l2_3") Нагруженности судна
+					option(value="l2_4") ИМО судна
+				br 
+				|Третий уровень:
+				select(name="level3")
+					option(value="l3_0") Дате прибытия 
+					option(value="l3_1") Дате отбытия 
+					option(value="l3_2") Вместимости судна 
+					option(value="l3_3") Нагруженности судна 
+					option(value="l3_4") ИМО судна 
+				br
+			input(type="button" value="Отcортировать")
+	table(align="center" border="1" cellpadding="2" cellspacing="0")
+		- i = 0
+		each item in TableData
+			if i == 0
+				tr
+					th= item.IMO
+					th= item.Model
+					th= item.Type
+					th= item.DataArival
+					th= item.DataDeparture
+					th= item.Capacity
+					th= item.Loading
+			else
+				tr
+					td= item.IMO
+					td= item.Model
+					td= item.Type
+					td= item.DataArival
+					td= item.DataDeparture
+					td= item.Capacity
+					td= item.Loading

@@ -1,0 +1,21 @@
+	table(align=center border=1 cellpadding=2 cellspacing=0)
+		- i = 0
+		each item in TableData
+			if i == 0
+				tr
+					th= item.IMO
+					th= item.Model
+					th= item.Type
+					th= item.DataArival
+					th= item.DataDeparture
+					th= item.Capacity
+					th= item.Loading
+			else
+				tr
+					td= item.IMO
+					td= item.Model
+					td= item.Type
+					td= item.DataArival
+					td= item.DataDeparture
+					td= item.Capacity
+					td= item.Loading

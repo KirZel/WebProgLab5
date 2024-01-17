@@ -1,0 +1,11 @@
+extends template
+block append variables
+	- var title1 = 'История порта'
+block content
+	h1 История порта Красноастанска
+	div.content
+		each item in listSectionsHistory
+			div.blocktext
+				h3= item.header
+				img(src="img/" +item.pic).imagebig
+				p.text= item.text

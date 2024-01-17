@@ -6,7 +6,11 @@ marginwidthmixin(marg,widt){
 	width widt
 }
 
+
 ColorGrey = #303030
+
+h1
+	text-align center
 
 .searchbar
 	height 30px
@@ -27,11 +31,6 @@ ColorGrey = #303030
 	height 2.5em 
 	background LightBlue 
 	padding 3px
-	& .zagolovok
-		margin-right auto
-		margin-top 15px
-		font-weight bold
-		font-size 1em
 
 .menucontainer
 	height 100%
@@ -39,6 +38,11 @@ ColorGrey = #303030
 	display flex
 	flex-direction row
 	justify-content flex-end
+	& .zagolovok
+		margin-right auto
+		margin-top 15px
+		font-weight bold
+		font-size 1em
 
 .not_active
 	height 40% 
@@ -48,6 +52,14 @@ ColorGrey = #303030
 	margin auto 3px 
 	padding 5px 
 	padding-top 15px
+	&:hover
+		height 80%
+		width 12%
+		background #000000
+		color white
+		margin auto 3px
+		padding 5px
+		padding-top 15px
 .active
 	height 80%
 	width 12%
@@ -88,12 +100,15 @@ ColorGrey = #303030
 	& h3
 		text-align center
 		margin 2px
-	& img
-		width 50px
-		height 30px
 	& p
 		text-align center
 		margin 2px
+.imagesmall
+	width 50px
+	height 30px
+.imagebig
+	width 100%
+	height 40%
 .text
 	text-align justify
 
@@ -115,6 +130,9 @@ ColorGrey = #303030
 		marginwidthmixin(4px,50%)
 	& .pic
 		marginwidthmixin(4px,50%)
+	transition all 0.2s ease
+	&:hover
+		transform scale(1.2)
 .pic 
 	& img
 		width 100%
@@ -136,27 +154,36 @@ ColorGrey = #303030
 		padding 3px	
 	.menucontainer
 		display grid
-		grid-template-columns 1fr 1fr
-		grid-template-rows 1fr 1fr 1fr
+		grid-template-columns 1fr 1fr 1fr
+		grid-template-rows 1fr 1fr 
 	.menubar 
 		& .zagolovok
 			margin auto
-			gridareamixin(1,1,2,3)
-	.menuelem
-		height 40%
-		width 60px
+			gridareamixin(1,1,2,4)
+	.not_active
+		height 60%
+		width 120px
 		background ColorGrey
 		color white
 		margin auto
 		padding 5px
-		&_active
-			height 60%
-			width 60px
+		&:hover
+			height 80%
+			width 120px
 			background #000000
 			color white
 			margin auto
 			padding 5px
 			padding-top 10px
+	.active
+		height 80%
+		width 120px
+		background #000000
+		color white
+		margin auto
+		padding 5px
+		padding-top 10px
+
 	.content
 		flex-direction column
 	.blocktext
@@ -175,3 +202,8 @@ ColorGrey = #303030
 			gridareamixin(2,1,3,2)
 		& > .img3
 			gridareamixin(3,1,4,2)
+
+	.textandpic
+		transition all 0.2s ease
+		&:hover
+			transform scale(1.1)

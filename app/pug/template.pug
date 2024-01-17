@@ -1,0 +1,13 @@
+include variables
+
+doctype html
+html(lang="ru")
+	head
+		title #{title}
+		link(rel="stylesheet", href="css/main.css")
+	body
+		block header
+			+createMenu(dictMenu,title1)
+		block content
+		block footer
+			include footer

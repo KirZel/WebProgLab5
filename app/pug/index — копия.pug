@@ -1,0 +1,33 @@
+include variables.pug
+
+doctype html
+html(lang="ru")
+	head
+		meta(charset="utf-8")
+		title #{title}
+		link(rel="stylesheet", href="css/main.css")
+	body
+		+createMenu(dictMenu, 'Главная')
+		+createGallery()
+		div.content
+			- i = 0
+			each item in listSections
+				div.blocktext
+					p
+						img(src="img/" +item.pic).imagesmall
+					h3= item.header
+					p.text= item.text
+					- i++
+				if i == 2
+					div.blockofblocks
+						each item2 in listLitlleSection
+							div.textandpic
+								div.text
+									h3= item2.header
+									p= item2.text
+								div.pic
+									img(src="img/" +item2.pic)
+
+		include footer
+
+				
